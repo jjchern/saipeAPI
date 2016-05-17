@@ -56,6 +56,5 @@ Future Work
 ===========
 
 -   Finish county and school district functions
--   Better error messages
 -   Complete documentation
 -   Provide basic usages of all the functions

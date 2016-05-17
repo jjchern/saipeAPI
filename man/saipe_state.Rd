@@ -4,8 +4,13 @@
 \alias{saipe_state}
 \title{State level SAIPE data}
 \usage{
-saipe_state(var = c("SAEMHI_PT", "SAEPOVRTALL_PT"), year = 2010,
-  api_key = NULL)
+saipe_state(year = 2010, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"),
+  api_key = Sys.getenv("saipe_key"))
+}
+\arguments{
+\item{year}{a numeric value. Possible values: 1989, 1993, 1995-2014.}
+
+\item{var}{a string or vector of string. Possible fields: \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}}
 }
 \description{
 State level SAIPE data
@@ -13,6 +18,6 @@ State level SAIPE data
 \examples{
 set_api_key("<Your api here>")
 # Get state level median household income and poverty rate in 2014
-saipe_state(var = c("SAEMHI_PT", "SAEPOVRTALL_PT"), year = 2014)
+\dontrun{saipe_state(year = 2014, var = c("SAEMHI_PT", "SAEPOVRTALL_PT"))}
 }
 

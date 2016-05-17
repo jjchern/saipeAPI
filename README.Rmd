@@ -47,6 +47,5 @@ saipeAPI::saipe_state(var = c("SAEMHI_PT", "SAEPOVRTALL_PT"), year = 2014)
 # Future Work
 
 - Finish county and school district functions
-- Better error messages
 - Complete documentation
 - Provide basic usages of all the functions
