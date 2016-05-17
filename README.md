@@ -15,8 +15,8 @@ SAIPE has four levels of income and poverty estimates: us, state, county, and sc
 Available Years
 ---------------
 
--   State and County: 1989, 1993, 1995-2014
--   School Districts: 1995, 1997, 1999-2014
+-   State and County: 1989, 1993, 1995--2014
+-   School Districts: 1995, 1997, 1999--2014
 
 Installation
 ============
@@ -34,7 +34,8 @@ Obtain an API key from the U.S. Census Bureau at <http://api.census.gov/data/key
 ``` r
 # saipe::set_api_key("<Your API Key Here>")
 # Get state level estimates of median household income and poverty rate in 2014
-saipeAPI::saipe_state(var = c("SAEMHI_PT", "SAEPOVRTALL_PT"), year = 2014)
+saipeAPI::saipe_state(year = 2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+#> 
 #> Source: local data frame [51 x 5]
 #> 
 #>                    NAME SAEMHI_PT SAEPOVRTALL_PT  time state
@@ -55,6 +56,5 @@ saipeAPI::saipe_state(var = c("SAEMHI_PT", "SAEPOVRTALL_PT"), year = 2014)
 Future Work
 ===========
 
--   Finish county and school district functions
--   Complete documentation
+-   Add school district functions
 -   Provide basic usages of all the functions
