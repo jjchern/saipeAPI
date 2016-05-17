@@ -33,3 +33,20 @@ SAIPE has four levels of income and poverty estimates: us, state, county, and sc
 # install.packages("devtools")
 devtools::install_github("jjchern/saipeAPI")
 ```
+
+# Usage
+
+Obtain an API key from the U.S. Census Bureau at [http://api.census.gov/data/key_signup.html](http://api.census.gov/data/key_signup.html). After that, set your API key with the function `saipeAPI::set_api_key()`.
+
+```{r}
+# saipe::set_api_key("<Your API Key Here>")
+# Get state level estimates of median household income and poverty rate in 2014
+saipeAPI::saipe_state(var = c("SAEMHI_PT", "SAEPOVRTALL_PT"), year = 2014)
+```
+
+# Future Work
+
+- Finish county and school district functions
+- Better error messages
+- Complete documentation
+- Provide basic usages of all the functions

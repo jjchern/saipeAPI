@@ -25,3 +25,37 @@ Installation
 # install.packages("devtools")
 devtools::install_github("jjchern/saipeAPI")
 ```
+
+Usage
+=====
+
+Obtain an API key from the U.S. Census Bureau at <http://api.census.gov/data/key_signup.html>. After that, set your API key with the function `saipeAPI::set_api_key()`.
+
+``` r
+# saipe::set_api_key("<Your API Key Here>")
+# Get state level estimates of median household income and poverty rate in 2014
+saipeAPI::saipe_state(var = c("SAEMHI_PT", "SAEPOVRTALL_PT"), year = 2014)
+#> Source: local data frame [51 x 5]
+#> 
+#>                    NAME SAEMHI_PT SAEPOVRTALL_PT  time state
+#>                   (chr)     (int)          (dbl) (int) (chr)
+#> 1               Alabama     42917           19.2  2014    01
+#> 2                Alaska     70898           11.4  2014    02
+#> 3               Arizona     50036           18.2  2014    04
+#> 4              Arkansas     41335           18.7  2014    05
+#> 5            California     61927           16.4  2014    06
+#> 6              Colorado     61324           12.1  2014    08
+#> 7           Connecticut     70007           10.8  2014    09
+#> 8              Delaware     59853           13.0  2014    10
+#> 9  District of Columbia     69992           18.4  2014    11
+#> 10              Florida     47439           16.6  2014    12
+#> ..                  ...       ...            ...   ...   ...
+```
+
+Future Work
+===========
+
+-   Finish county and school district functions
+-   Better error messages
+-   Complete documentation
+-   Provide basic usages of all the functions
