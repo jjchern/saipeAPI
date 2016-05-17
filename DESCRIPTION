@@ -1,0 +1,13 @@
+Package: saipeAPI
+Title: An R client for Census Bureau's API for Small Area Income and Poverty Estimates (SAIPE)
+Version: 0.0.0.9000
+Authors@R: 'JJ Chen <jiajia.chern@gmail.com> [aut, cre]'
+Description: An R client for Census Bureau's API for Small Area Income and Poverty Estimates (SAIPE).
+Depends:
+    R (>= 3.3.0)
+License: CC0
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/jjchern/saipeAPI
+BugReports: https://github.com/jjchern/saipeAPI/issues
+RoxygenNote: 5.0.1
