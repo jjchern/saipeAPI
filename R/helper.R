@@ -1,7 +1,7 @@
 # Helper function 1: Parse one year's data, and return a tibble
 saipe_parse = function(url){
 
-        resp = httr::GET(url)
+        resp = httr::GET(url, httr::progress())
         if (resp$status_code != 200) stop("HTTP failure: ", resp$status_code, call. = FALSE)
 
         text = httr::content(resp, "text")
