@@ -4,7 +4,7 @@
 \name{saipe_vars}
 \alias{saipe_vars}
 \title{Possible variables for us, state, and county-level datasets}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 50 rows and 5 columns.}
+\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 47 rows and 5 columns.}
 \source{
 \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}
 }
@@ -13,6 +13,10 @@ saipe_vars
 }
 \description{
 A data frame contains possible variables and variable labels.
+}
+\examples{
+# To get a vector of possible variables:
+saipeAPI::saipe_vars$Name
 }
 \keyword{datasets}
 
