@@ -23,8 +23,8 @@ Available Geographies
 
 Census's SAIPE has four levels of income and poverty estimates: us, state, county, and school district.
 
-Available Years
----------------
+Available Years ([Source](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html))
+---------------------------------------------------------------------------------------------------
 
 -   State and County: 1989, 1993, 1995--2014
 -   School Districts: 1995, 1997, 1999--2014
@@ -144,7 +144,7 @@ saipeAPI::saipe_county(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTA
 #> Source: local data frame [15,714 x 6]
 #> 
 #>               NAME SAEMHI_PT SAEPOVRTALL_PT  time state county
-#>              (chr)     (int)          (dbl) (int) (chr)  (chr)
+#>              <chr>     <int>          <dbl> <int> <chr>  <chr>
 #> 1   Autauga County     53049           11.9  2010    01    001
 #> 2   Baldwin County     47618           13.3  2010    01    003
 #> 3   Barbour County     33074           25.3  2010    01    005
@@ -156,6 +156,87 @@ saipeAPI::saipe_county(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTA
 #> 9  Chambers County     30061           28.5  2010    01    017
 #> 10 Cherokee County     34410           21.2  2010    01    019
 #> ..             ...       ...            ...   ...   ...    ...
+```
+
+Possible Variables and Years
+----------------------------
+
+``` r
+# The pacakge contains a data frame that shows possible variables and variable labels
+saipeAPI::saipe_vars
+#> Source: local data frame [47 x 5]
+#> 
+#>               Name
+#>              <chr>
+#> 1           COUNTY
+#> 2            GEOID
+#> 3             NAME
+#> 4      SAEMHI_LB90
+#> 5       SAEMHI_MOE
+#> 6        SAEMHI_PT
+#> 7      SAEMHI_UB90
+#> 8  SAEPOV0_17_LB90
+#> 9   SAEPOV0_17_MOE
+#> 10   SAEPOV0_17_PT
+#> ..             ...
+#> Variables not shown: Label <chr>, Concept <chr>, Required <chr>,
+#>   Predicate.Type <chr>.
+
+# To get a vector of all possible variables
+saipeAPI::saipe_vars$Name
+#>  [1] "COUNTY"             "GEOID"              "NAME"              
+#>  [4] "SAEMHI_LB90"        "SAEMHI_MOE"         "SAEMHI_PT"         
+#>  [7] "SAEMHI_UB90"        "SAEPOV0_17_LB90"    "SAEPOV0_17_MOE"    
+#> [10] "SAEPOV0_17_PT"      "SAEPOV0_17_UB90"    "SAEPOV0_4_LB90"    
+#> [13] "SAEPOV0_4_MOE"      "SAEPOV0_4_PT"       "SAEPOV0_4_UB90"    
+#> [16] "SAEPOV5_17R_LB90"   "SAEPOV5_17R_MOE"    "SAEPOV5_17R_PT"    
+#> [19] "SAEPOV5_17R_UB90"   "SAEPOVALL_LB90"     "SAEPOVALL_MOE"     
+#> [22] "SAEPOVALL_PT"       "SAEPOVALL_UB90"     "SAEPOVRT0_17_LB90" 
+#> [25] "SAEPOVRT0_17_MOE"   "SAEPOVRT0_17_PT"    "SAEPOVRT0_17_UB90" 
+#> [28] "SAEPOVRT0_4_LB90"   "SAEPOVRT0_4_MOE"    "SAEPOVRT0_4_PT"    
+#> [31] "SAEPOVRT0_4_UB90"   "SAEPOVRT5_17R_LB90" "SAEPOVRT5_17R_MOE" 
+#> [34] "SAEPOVRT5_17R_PT"   "SAEPOVRT5_17R_UB90" "SAEPOVRTALL_LB90"  
+#> [37] "SAEPOVRTALL_MOE"    "SAEPOVRTALL_PT"     "SAEPOVRTALL_UB90"  
+#> [40] "SAEPOVU_0_17"       "SAEPOVU_0_4"        "SAEPOVU_5_17R"     
+#> [43] "SAEPOVU_ALL"        "STABREV"            "STATE"             
+#> [46] "SUMLEV"             "YEAR"
+
+# To get a vector of all possible years
+saipeAPI::saipe_years
+#>  [1] 1989 1993 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006
+#> [15] 2007 2008 2009 2010 2011 2012 2013 2014
+
+# Use the above two vectors to download all the US-level data
+saipeAPI::saipe_us(year = saipeAPI::saipe_years, var = saipeAPI::saipe_vars$Name)
+#> Source: local data frame [22 x 49]
+#> 
+#>    COUNTY GEOID          NAME SAEMHI_LB90 SAEMHI_MOE SAEMHI_PT SAEMHI_UB90
+#>     <chr> <chr>         <chr>       <int>      <int>     <int>       <int>
+#> 1     000 00000 United States       28644        262     28906       29168
+#> 2     000 00000 United States       31001        240     31241       31481
+#> 3     000 00000 United States       33752        324     34076       34400
+#> 4     000 00000 United States       35198        294     35492       35786
+#> 5     000 00000 United States       36724        281     37005       37286
+#> 6     000 00000 United States       38507        378     38885       39263
+#> 7     000 00000 United States       40383        313     40696       41009
+#> 8     000 00000 United States       41773        217     41990       42207
+#> 9     000 00000 United States       42016        212     42228       42440
+#> 10    000 00000 United States       42180        229     42409       42638
+#> ..    ...   ...           ...         ...        ...       ...         ...
+#> Variables not shown: SAEPOV0_17_LB90 <int>, SAEPOV0_17_MOE <int>,
+#>   SAEPOV0_17_PT <int>, SAEPOV0_17_UB90 <int>, SAEPOV0_4_LB90 <int>,
+#>   SAEPOV0_4_MOE <int>, SAEPOV0_4_PT <int>, SAEPOV0_4_UB90 <int>,
+#>   SAEPOV5_17R_LB90 <int>, SAEPOV5_17R_MOE <int>, SAEPOV5_17R_PT <int>,
+#>   SAEPOV5_17R_UB90 <int>, SAEPOVALL_LB90 <int>, SAEPOVALL_MOE <int>,
+#>   SAEPOVALL_PT <int>, SAEPOVALL_UB90 <int>, SAEPOVRT0_17_LB90 <dbl>,
+#>   SAEPOVRT0_17_MOE <dbl>, SAEPOVRT0_17_PT <dbl>, SAEPOVRT0_17_UB90 <dbl>,
+#>   SAEPOVRT0_4_LB90 <dbl>, SAEPOVRT0_4_MOE <dbl>, SAEPOVRT0_4_PT <dbl>,
+#>   SAEPOVRT0_4_UB90 <dbl>, SAEPOVRT5_17R_LB90 <dbl>, SAEPOVRT5_17R_MOE
+#>   <dbl>, SAEPOVRT5_17R_PT <dbl>, SAEPOVRT5_17R_UB90 <dbl>,
+#>   SAEPOVRTALL_LB90 <dbl>, SAEPOVRTALL_MOE <dbl>, SAEPOVRTALL_PT <dbl>,
+#>   SAEPOVRTALL_UB90 <dbl>, SAEPOVU_0_17 <int>, SAEPOVU_0_4 <int>,
+#>   SAEPOVU_5_17R <int>, SAEPOVU_ALL <int>, STABREV <chr>, STATE <chr>,
+#>   SUMLEV <chr>, YEAR <int>, time <int>, us <chr>.
 ```
 
 Future Work
