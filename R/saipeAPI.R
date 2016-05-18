@@ -7,11 +7,11 @@ set_api_key = function(api_key) Sys.setenv(saipe_key = api_key)
 #' @description Get SAIPE data at various geographic levels.
 #' @export
 #'
-#' @import dplyr
-#' @import httr
+#' @import tibble
+#' @importFrom httr GET content
 #' @importFrom readr write_csv read_csv
 #' @importFrom jsonlite fromJSON
-#' @importFrom purrr map_df
+#' @importFrom plyr ldply
 #'
 #' @param geo (character) One of "us", "state", and "county".
 #' @param year (numeric) A four-digits value or vector of values.
@@ -49,7 +49,15 @@ saipe = function(geo, year = 2010, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"
                      "&for=", geo, ":", "*",
                      "&time=", year,
                      "&key=", api_key)
-        purrr::map_df(url, saipe_parse) # `saipe_parse()` is in helper.R
+
+        # `saipe_parse()` is in helper.R
+        # Previously I use purrr::map_df(), but hit a bug with incompatible types
+        plyr::ldply(url, saipe_parse) -> parsed
+
+        # With purrr::map_df(), the next part won't be necessary
+        tf_csv = tempfile(fileext = ".csv")
+        readr::write_csv(parsed, tf_csv)
+        readr::read_csv(tf_csv)
 }
 
 #' @export
