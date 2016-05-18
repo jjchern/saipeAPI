@@ -35,9 +35,7 @@ Available Variables ([Source](http://api.census.gov/data/timeseries/poverty/saip
 | Name                 | Label                                                                           |
 |:---------------------|:--------------------------------------------------------------------------------|
 | COUNTY               | County FIPS Code                                                                |
-| for                  | Census API FIPS 'for' clause                                                    |
 | GEOID                | State+County FIPS Code                                                          |
-| in                   | Census API FIPS 'in' clause                                                     |
 | NAME                 | State or County Name                                                            |
 | SAEMHI\_LB90         | Median Household Income Lower Bound for 90% Confidence Interval                 |
 | SAEMHI\_MOE          | Median Household Income Margin of Error                                         |
@@ -82,7 +80,6 @@ Available Variables ([Source](http://api.census.gov/data/timeseries/poverty/saip
 | STABREV              | Two-letter State Postal abbreviation                                            |
 | STATE                | FIPS State Code                                                                 |
 | SUMLEV               | Summary Level                                                                   |
-| time                 | ISO-8601 Date/Time value                                                        |
 | YEAR                 | Estimate Year                                                                   |
 
 Installation
@@ -165,4 +162,3 @@ Future Work
 ===========
 
 -   Add school district functions
--   Provide basic usages of all the functions

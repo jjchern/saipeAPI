@@ -43,6 +43,7 @@ Census's SAIPE has four levels of income and poverty estimates: us, state, count
 library(dplyr, warn.conflicts = FALSE)
 saipeAPI::saipe_vars %>%
         select(Name, Label) %>% 
+        filter(!(Name %in% c("for", "in", "time"))) %>% 
         knitr::kable()
 ```
 
@@ -59,21 +60,21 @@ Obtain an API key from the U.S. Census Bureau at [http://api.census.gov/data/key
 
 ## National level estimates of median household income and poverty rate in 2010--2014
 
-```{r, message=FALSE, warning=FALSE}
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
 saipeAPI::saipe_us(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
 ## State-level estimates of median household income and poverty rate in 2010--2014
 
-```{r, message=FALSE, warning=FALSE}
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
 saipeAPI::saipe_state(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
 ## County-level data estimates of median household income and poverty rate in 2010--2014
 
-```{r, message=FALSE, warning=FALSE}
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
 saipeAPI::saipe_county(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
