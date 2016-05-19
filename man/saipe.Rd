@@ -19,15 +19,13 @@ saipe_county(...)
 \arguments{
 \item{geo}{(character) One of "us", "state", and "county".}
 
-\item{year}{(numeric) A four-digits value or vector of values.
-Possible values: 1989, 1993, 1995--2014.}
+\item{year}{(numeric) A four-digits value or vector of values. Possible values: 1989, 1993, 1995--2014.}
 
-\item{var}{(character) A string or vector of strings.
-Possible fields: \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}}
+\item{var}{(character) A string or vector of strings. Possible fields: \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}}
 
-\item{...}{Pass parameter \code{year} or \code{var} for function
-\code{saipe_us()}, \code{saipe_state()}, and \code{saipe_county()}.
-See Example section.}
+\item{api_key}{Use \code{saipeAPI::set_api_key("<Your api here>")} to set api_key.}
+
+\item{...}{Pass parameter \code{year} or \code{var} for function \code{saipe_us()}, \code{saipe_state()}, and \code{saipe_county()}. Also see Example section.}
 }
 \value{
 Return a tibble, i.e., modern data frame.

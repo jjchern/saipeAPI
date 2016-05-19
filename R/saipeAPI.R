@@ -14,13 +14,10 @@ set_api_key = function(api_key) Sys.setenv(saipe_key = api_key)
 #' @importFrom plyr ldply
 #'
 #' @param geo (character) One of "us", "state", and "county".
-#' @param year (numeric) A four-digits value or vector of values.
-#' Possible values: 1989, 1993, 1995--2014.
-#' @param var (character) A string or vector of strings.
-#' Possible fields: \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}
-#' @param ... Pass parameter \code{year} or \code{var} for function
-#' \code{saipe_us()}, \code{saipe_state()}, and \code{saipe_county()}.
-#' See Example section.
+#' @param year (numeric) A four-digits value or vector of values. Possible values: 1989, 1993, 1995--2014.
+#' @param var (character) A string or vector of strings. Possible fields: \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}
+#' @param api_key Use \code{saipeAPI::set_api_key("<Your api here>")} to set api_key.
+#' @param ... Pass parameter \code{year} or \code{var} for function \code{saipe_us()}, \code{saipe_state()}, and \code{saipe_county()}. Also see Example section.
 #'
 #' @return Return a tibble, i.e., modern data frame.
 #' If multiple years are specified, it gives a panel dataset.
