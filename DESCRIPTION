@@ -11,3 +11,8 @@ LazyData: true
 URL: https://github.com/jjchern/saipeAPI
 BugReports: https://github.com/jjchern/saipeAPI/issues
 RoxygenNote: 5.0.1
+Imports: tibble,
+    httr,
+    readr,
+    jsonlite,
+    plyr
