@@ -6,6 +6,9 @@
 \usage{
 set_api_key(api_key)
 }
+\arguments{
+\item{api_key}{(character) Get Census's API key at \url{http://api.census.gov/data/key_signup.html}.}
+}
 \description{
 Set the Census API key
 }

@@ -1,5 +1,6 @@
 #' Set the Census API key
 #' @export
+#' @param api_key (character) Get Census's API key at \url{http://api.census.gov/data/key_signup.html}.
 set_api_key = function(api_key) Sys.setenv(saipe_key = api_key)
 
 #' @title Get SAIPE data
