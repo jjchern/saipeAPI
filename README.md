@@ -34,8 +34,6 @@ Available Years ([Source](http://www.census.gov/data/developers/data-sets/Povert
 Available Variables ([Source](http://api.census.gov/data/timeseries/poverty/saipe/variables.html))
 --------------------------------------------------------------------------------------------------
 
-    #> Warning: package 'dplyr' was built under R version 3.4.2
-
 | Name                 | Label                                                                           |
 |:---------------------|:--------------------------------------------------------------------------------|
 | COUNTY               | County FIPS Code                                                                |
