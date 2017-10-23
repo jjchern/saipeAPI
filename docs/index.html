@@ -338,25 +338,25 @@ saipeAPI<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <span class="co">#&gt; 10              Florida     44390           16.5  2010    12</span>
 <span class="co">#&gt; # ... with 296 more rows</span></code></pre></div>
 </div>
-<div id="county-level-data-estimates-of-median-household-income-and-poverty-rate-in-20102015" class="section level2">
+<div id="county-level-data-estimates-of-median-household-income-and-poverty-rate-in-2015" class="section level2">
 <h2 class="hasAnchor">
-<a href="#county-level-data-estimates-of-median-household-income-and-poverty-rate-in-20102015" class="anchor"></a>County-level data estimates of median household income and poverty rate in 2010–2015</h2>
+<a href="#county-level-data-estimates-of-median-household-income-and-poverty-rate-in-2015" class="anchor"></a>County-level data estimates of median household income and poverty rate in 2015</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># saipe::set_api_key("&lt;Your API Key Here&gt;")</span>
-saipeAPI<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/saipeAPI/topics/saipe">saipe_county</a></span>(<span class="dt">year =</span> <span class="dv">2010</span><span class="op">:</span><span class="dv">2015</span>, <span class="dt">var =</span> <span class="kw">c</span>(<span class="st">"NAME"</span>, <span class="st">"SAEMHI_PT"</span>, <span class="st">"SAEPOVRTALL_PT"</span>))
-<span class="co">#&gt; # A tibble: 18,856 x 6</span>
+saipeAPI<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/saipeAPI/topics/saipe">saipe_county</a></span>(<span class="dt">year =</span> <span class="dv">2015</span>, <span class="dt">var =</span> <span class="kw">c</span>(<span class="st">"NAME"</span>, <span class="st">"SAEMHI_PT"</span>, <span class="st">"SAEPOVRTALL_PT"</span>))
+<span class="co">#&gt; # A tibble: 3,142 x 6</span>
 <span class="co">#&gt;               NAME SAEMHI_PT SAEPOVRTALL_PT  time state county</span>
 <span class="co">#&gt;              &lt;chr&gt;     &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;</span>
-<span class="co">#&gt;  1  Autauga County     53049           11.9  2010    01    001</span>
-<span class="co">#&gt;  2  Baldwin County     47618           13.3  2010    01    003</span>
-<span class="co">#&gt;  3  Barbour County     33074           25.3  2010    01    005</span>
-<span class="co">#&gt;  4     Bibb County     35472           20.9  2010    01    007</span>
-<span class="co">#&gt;  5   Blount County     42906           16.5  2010    01    009</span>
-<span class="co">#&gt;  6  Bullock County     25969           31.1  2010    01    011</span>
-<span class="co">#&gt;  7   Butler County     29500           28.1  2010    01    013</span>
-<span class="co">#&gt;  8  Calhoun County     37916           23.5  2010    01    015</span>
-<span class="co">#&gt;  9 Chambers County     30061           28.5  2010    01    017</span>
-<span class="co">#&gt; 10 Cherokee County     34410           21.2  2010    01    019</span>
-<span class="co">#&gt; # ... with 18,846 more rows</span></code></pre></div>
+<span class="co">#&gt;  1  Autauga County     56580           12.7  2015    01    001</span>
+<span class="co">#&gt;  2  Baldwin County     52387           12.9  2015    01    003</span>
+<span class="co">#&gt;  3  Barbour County     31433           32.0  2015    01    005</span>
+<span class="co">#&gt;  4     Bibb County     40767           22.2  2015    01    007</span>
+<span class="co">#&gt;  5   Blount County     50487           14.7  2015    01    009</span>
+<span class="co">#&gt;  6  Bullock County     28251           39.6  2015    01    011</span>
+<span class="co">#&gt;  7   Butler County     33868           25.8  2015    01    013</span>
+<span class="co">#&gt;  8  Calhoun County     42091           20.0  2015    01    015</span>
+<span class="co">#&gt;  9 Chambers County     35560           22.4  2015    01    017</span>
+<span class="co">#&gt; 10 Cherokee County     39144           19.4  2015    01    019</span>
+<span class="co">#&gt; # ... with 3,132 more rows</span></code></pre></div>
 </div>
 <div id="possible-variables-and-years" class="section level2">
 <h2 class="hasAnchor">
