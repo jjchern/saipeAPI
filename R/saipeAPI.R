@@ -42,7 +42,7 @@ saipe = function(geo, year = 2010, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"
         if (identical(api_key, ""))
                 stop("Missing API key. Did you forget to call saipeAPI::set_api_key()?", call. = FALSE)
         var = paste(var, sep = '', collapse = ',')
-        url = paste0("http://api.census.gov/data/timeseries/poverty/saipe?",
+        url = paste0("https://api.census.gov/data/timeseries/poverty/saipe?",
                      "get=", var,
                      "&for=", geo, ":", "*",
                      "&time=", year,
