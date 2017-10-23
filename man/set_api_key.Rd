@@ -12,4 +12,3 @@ set_api_key(api_key)
 \description{
 Set the Census API key
 }
-

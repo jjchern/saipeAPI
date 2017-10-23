@@ -4,7 +4,7 @@
 \name{saipe_years}
 \alias{saipe_years}
 \title{Possible years for us, state, and county-level datasets}
-\format{An object of class \code{numeric} of length 22.}
+\format{An object of class \code{numeric} of length 23.}
 \source{
 \url{http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html}
 }
@@ -19,4 +19,3 @@ A vector contains all possible years to retrieve
 saipeAPI::saipe_years
 }
 \keyword{datasets}
-

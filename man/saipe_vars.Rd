@@ -19,4 +19,3 @@ A data frame contains possible variables and variable labels.
 saipeAPI::saipe_vars$Name
 }
 \keyword{datasets}
-

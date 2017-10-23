@@ -2,9 +2,9 @@
 % Please edit documentation in R/saipeAPI.R
 \name{saipe}
 \alias{saipe}
-\alias{saipe_county}
-\alias{saipe_state}
 \alias{saipe_us}
+\alias{saipe_state}
+\alias{saipe_county}
 \title{Get SAIPE data}
 \usage{
 saipe(geo, year = 2010, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"),
@@ -50,4 +50,3 @@ saipeAPI::saipe_state(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTAL
 saipeAPI::saipe_county(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 }
 }
-
