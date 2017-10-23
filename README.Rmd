@@ -7,6 +7,8 @@ editor_options:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![Travis-CI Build Status](https://travis-ci.org/jjchern/saipeAPI.svg?branch=master)](https://travis-ci.org/jjchern/saipeAPI)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jjchern/saipeAPI?branch=master&svg=true)](https://ci.appveyor.com/project/jjchern/saipeAPI)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/saipeAPI)](https://cran.r-project.org/package=saipeAPI)
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
@@ -18,13 +20,13 @@ knitr::opts_chunk$set(
 
 # About
 
-The goal of `saipeAPI` is to provide an R client for Census Bureau's API for **S**mall **A**rea **I**ncome and **P**overty **E**stimates (SAIPE). Here is a short introduction for the SAIPE program from [Census](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html):
+The package `saipeAPI` provides an R client for Census Bureau's API for **S**mall **A**rea **I**ncome and **P**overty **E**stimates (SAIPE). Here is a short introduction for the SAIPE program from [Census](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html):
 
 > The Small Area Income and Poverty Estimates (SAIPE) program produces single-year estimates of median household income and poverty for states and all counties, as well as population and poverty estimates for school districts. Since SAIPE estimates combine ACS data with administrative and other data, SAIPE estimates generally have lower variance than ACS estimates but are released later because they incorporate ACS data in the models. For counties and school districts, particularly those with populations below 65,000, the SAIPE program provides the most accurate subnational estimates of poverty. For counties, SAIPE generally provides the best single-year estimates of median household income.
 
 ## Feature
 
-So far `saipeAPI` have three functions that return SAIPE data at different geographic level:
+`saipeAPI` have three functions that return SAIPE data at different geographic level:
 
 ```R
 saipeAPI::saipe_us()
@@ -38,8 +40,8 @@ Census's SAIPE has four levels of income and poverty estimates: us, state, count
 
 ## Available Years ([Source](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html))
 
-- State and County: 1989, 1993, 1995--2014
-- School Districts: 1995, 1997, 1999--2014
+- State and County: 1989, 1993, 1995--2015
+- School Districts: 1995, 1997, 1999--2015
 
 ## Available Variables ([Source](http://api.census.gov/data/timeseries/poverty/saipe/variables.html))
 
@@ -61,25 +63,25 @@ devtools::install_github("jjchern/saipeAPI")
 
 Obtain an API key from the U.S. Census Bureau at [http://api.census.gov/data/key_signup.html](http://api.census.gov/data/key_signup.html). After that, set your API key with the function `saipeAPI::set_api_key()`.
 
-## National level estimates of median household income and poverty rate in 2010--2014
+## National level estimates of median household income and poverty rate in 2010--2015
 
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_us(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+saipeAPI::saipe_us(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
-## State-level estimates of median household income and poverty rate in 2010--2014
+## State-level estimates of median household income and poverty rate in 2010--2015
 
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_state(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+saipeAPI::saipe_state(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
-## County-level data estimates of median household income and poverty rate in 2010--2014
+## County-level data estimates of median household income and poverty rate in 2010--2015
 
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_county(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+saipeAPI::saipe_county(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
 ## Possible Variables and Years
@@ -97,7 +99,6 @@ saipeAPI::saipe_years
 # Use the above two vectors to download all the US-level data
 saipeAPI::saipe_us(year = saipeAPI::saipe_years, var = saipeAPI::saipe_vars$Name)
 ```
-
 
 # Future Work
 

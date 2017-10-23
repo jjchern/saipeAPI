@@ -1,18 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis-CI Build Status](https://travis-ci.org/jjchern/saipeAPI.svg?branch=master)](https://travis-ci.org/jjchern/saipeAPI)
+[![Travis-CI Build Status](https://travis-ci.org/jjchern/saipeAPI.svg?branch=master)](https://travis-ci.org/jjchern/saipeAPI) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jjchern/saipeAPI?branch=master&svg=true)](https://ci.appveyor.com/project/jjchern/saipeAPI) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/saipeAPI)](https://cran.r-project.org/package=saipeAPI)
 
 About
 =====
 
-The goal of `saipeAPI` is to provide an R client for Census Bureau's API for **S**mall **A**rea **I**ncome and **P**overty **E**stimates (SAIPE). Here is a short introduction for the SAIPE program from [Census](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html):
+The package `saipeAPI` provides an R client for Census Bureau's API for **S**mall **A**rea **I**ncome and **P**overty **E**stimates (SAIPE). Here is a short introduction for the SAIPE program from [Census](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html):
 
 > The Small Area Income and Poverty Estimates (SAIPE) program produces single-year estimates of median household income and poverty for states and all counties, as well as population and poverty estimates for school districts. Since SAIPE estimates combine ACS data with administrative and other data, SAIPE estimates generally have lower variance than ACS estimates but are released later because they incorporate ACS data in the models. For counties and school districts, particularly those with populations below 65,000, the SAIPE program provides the most accurate subnational estimates of poverty. For counties, SAIPE generally provides the best single-year estimates of median household income.
 
 Feature
 -------
 
-So far `saipeAPI` have three functions that return SAIPE data at different geographic level:
+`saipeAPI` have three functions that return SAIPE data at different geographic level:
 
 ``` r
 saipeAPI::saipe_us()
@@ -28,11 +28,13 @@ Census's SAIPE has four levels of income and poverty estimates: us, state, count
 Available Years ([Source](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html))
 ---------------------------------------------------------------------------------------------------
 
--   State and County: 1989, 1993, 1995--2014
--   School Districts: 1995, 1997, 1999--2014
+-   State and County: 1989, 1993, 1995--2015
+-   School Districts: 1995, 1997, 1999--2015
 
 Available Variables ([Source](http://api.census.gov/data/timeseries/poverty/saipe/variables.html))
 --------------------------------------------------------------------------------------------------
+
+    #> Warning: package 'dplyr' was built under R version 3.4.2
 
 | Name                 | Label                                                                           |
 |:---------------------|:--------------------------------------------------------------------------------|
@@ -97,67 +99,65 @@ Usage
 
 Obtain an API key from the U.S. Census Bureau at <http://api.census.gov/data/key_signup.html>. After that, set your API key with the function `saipeAPI::set_api_key()`.
 
-National level estimates of median household income and poverty rate in 2010--2014
+National level estimates of median household income and poverty rate in 2010--2015
 ----------------------------------------------------------------------------------
 
 ``` r
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_us(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
-#> Source: local data frame [5 x 5]
-#> 
+saipeAPI::saipe_us(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+#> # A tibble: 6 x 5
 #>            NAME SAEMHI_PT SAEPOVRTALL_PT  time    us
-#>           (chr)     (int)          (dbl) (int) (chr)
+#>           <chr>     <dbl>          <dbl> <dbl> <chr>
 #> 1 United States     50046           15.3  2010    00
 #> 2 United States     50502           15.9  2011    00
 #> 3 United States     51371           15.9  2012    00
 #> 4 United States     52250           15.8  2013    00
 #> 5 United States     53657           15.5  2014    00
+#> 6 United States     55775           14.7  2015    00
 ```
 
-State-level estimates of median household income and poverty rate in 2010--2014
+State-level estimates of median household income and poverty rate in 2010--2015
 -------------------------------------------------------------------------------
 
 ``` r
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_state(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
-#> Source: local data frame [255 x 5]
-#> 
+saipeAPI::saipe_state(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+#> # A tibble: 306 x 5
 #>                    NAME SAEMHI_PT SAEPOVRTALL_PT  time state
-#>                   (chr)     (int)          (dbl) (int) (chr)
-#> 1               Alabama     40538           18.9  2010    01
-#> 2                Alaska     63456           11.0  2010    02
-#> 3               Arizona     46787           17.6  2010    04
-#> 4              Arkansas     38413           18.7  2010    05
-#> 5            California     57664           15.8  2010    06
-#> 6              Colorado     54411           13.2  2010    08
-#> 7           Connecticut     64321           10.1  2010    09
-#> 8              Delaware     56172           11.9  2010    10
-#> 9  District of Columbia     60729           18.8  2010    11
+#>                   <chr>     <dbl>          <dbl> <dbl> <chr>
+#>  1              Alabama     40538           18.9  2010    01
+#>  2               Alaska     63456           11.0  2010    02
+#>  3              Arizona     46787           17.6  2010    04
+#>  4             Arkansas     38413           18.7  2010    05
+#>  5           California     57664           15.8  2010    06
+#>  6             Colorado     54411           13.2  2010    08
+#>  7          Connecticut     64321           10.1  2010    09
+#>  8             Delaware     56172           11.9  2010    10
+#>  9 District of Columbia     60729           18.8  2010    11
 #> 10              Florida     44390           16.5  2010    12
-#> ..                  ...       ...            ...   ...   ...
+#> # ... with 296 more rows
 ```
 
-County-level data estimates of median household income and poverty rate in 2010--2014
+County-level data estimates of median household income and poverty rate in 2010--2015
 -------------------------------------------------------------------------------------
 
 ``` r
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_county(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
-#> Source: local data frame [15,714 x 6]
-#> 
+saipeAPI::saipe_county(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+#> # A tibble: 18,856 x 6
 #>               NAME SAEMHI_PT SAEPOVRTALL_PT  time state county
-#>              <chr>     <int>          <dbl> <int> <chr>  <chr>
-#> 1   Autauga County     53049           11.9  2010    01    001
-#> 2   Baldwin County     47618           13.3  2010    01    003
-#> 3   Barbour County     33074           25.3  2010    01    005
-#> 4      Bibb County     35472           20.9  2010    01    007
-#> 5    Blount County     42906           16.5  2010    01    009
-#> 6   Bullock County     25969           31.1  2010    01    011
-#> 7    Butler County     29500           28.1  2010    01    013
-#> 8   Calhoun County     37916           23.5  2010    01    015
-#> 9  Chambers County     30061           28.5  2010    01    017
+#>              <chr>     <dbl>          <dbl> <dbl> <chr>  <chr>
+#>  1  Autauga County     53049           11.9  2010    01    001
+#>  2  Baldwin County     47618           13.3  2010    01    003
+#>  3  Barbour County     33074           25.3  2010    01    005
+#>  4     Bibb County     35472           20.9  2010    01    007
+#>  5   Blount County     42906           16.5  2010    01    009
+#>  6  Bullock County     25969           31.1  2010    01    011
+#>  7   Butler County     29500           28.1  2010    01    013
+#>  8  Calhoun County     37916           23.5  2010    01    015
+#>  9 Chambers County     30061           28.5  2010    01    017
 #> 10 Cherokee County     34410           21.2  2010    01    019
-#> ..             ...       ...            ...   ...   ...    ...
+#> # ... with 18,846 more rows
 ```
 
 Possible Variables and Years
@@ -166,23 +166,21 @@ Possible Variables and Years
 ``` r
 # The pacakge contains a data frame that shows possible variables and variable labels
 saipeAPI::saipe_vars
-#> Source: local data frame [47 x 5]
-#> 
+#> # A tibble: 47 x 5
 #>               Name
 #>              <chr>
-#> 1           COUNTY
-#> 2            GEOID
-#> 3             NAME
-#> 4      SAEMHI_LB90
-#> 5       SAEMHI_MOE
-#> 6        SAEMHI_PT
-#> 7      SAEMHI_UB90
-#> 8  SAEPOV0_17_LB90
-#> 9   SAEPOV0_17_MOE
+#>  1          COUNTY
+#>  2           GEOID
+#>  3            NAME
+#>  4     SAEMHI_LB90
+#>  5      SAEMHI_MOE
+#>  6       SAEMHI_PT
+#>  7     SAEMHI_UB90
+#>  8 SAEPOV0_17_LB90
+#>  9  SAEPOV0_17_MOE
 #> 10   SAEPOV0_17_PT
-#> ..             ...
-#> Variables not shown: Label <chr>, Concept <chr>, Required <chr>,
-#>   Predicate.Type <chr>.
+#> # ... with 37 more rows, and 4 more variables: Label <chr>, Concept <chr>,
+#> #   Required <chr>, Predicate.Type <chr>
 
 # To get a vector of all possible variables
 saipeAPI::saipe_vars$Name
@@ -206,39 +204,347 @@ saipeAPI::saipe_vars$Name
 # To get a vector of all possible years
 saipeAPI::saipe_years
 #>  [1] 1989 1993 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006
-#> [15] 2007 2008 2009 2010 2011 2012 2013 2014
+#> [15] 2007 2008 2009 2010 2011 2012 2013 2014 2015
 
 # Use the above two vectors to download all the US-level data
 saipeAPI::saipe_us(year = saipeAPI::saipe_years, var = saipeAPI::saipe_vars$Name)
-#> Source: local data frame [22 x 49]
-#> 
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   SAEPOVU_0_17 = col_character(),
+#>   SAEPOVU_0_4 = col_character(),
+#>   SAEPOVU_5_17R = col_character(),
+#>   SAEPOVU_ALL = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   SAEPOVU_0_17 = col_character(),
+#>   SAEPOVU_0_4 = col_character(),
+#>   SAEPOVU_5_17R = col_character(),
+#>   SAEPOVU_ALL = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   SAEPOVU_0_17 = col_character(),
+#>   SAEPOVU_0_4 = col_character(),
+#>   SAEPOVU_5_17R = col_character(),
+#>   SAEPOVU_ALL = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   SAEPOVU_0_17 = col_character(),
+#>   SAEPOVU_0_4 = col_character(),
+#>   SAEPOVU_5_17R = col_character(),
+#>   SAEPOVU_ALL = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   SAEPOVU_0_17 = col_character(),
+#>   SAEPOVU_0_4 = col_character(),
+#>   SAEPOVU_5_17R = col_character(),
+#>   SAEPOVU_ALL = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> Parsed with column specification:
+#> cols(
+#>   .default = col_double(),
+#>   COUNTY = col_character(),
+#>   GEOID = col_character(),
+#>   NAME = col_character(),
+#>   STABREV = col_character(),
+#>   STATE = col_character(),
+#>   SUMLEV = col_character(),
+#>   us = col_character()
+#> )
+#> See spec(...) for full column specifications.
+#> # A tibble: 23 x 49
 #>    COUNTY GEOID          NAME SAEMHI_LB90 SAEMHI_MOE SAEMHI_PT SAEMHI_UB90
-#>     <chr> <chr>         <chr>       <int>      <int>     <int>       <int>
-#> 1     000 00000 United States       28644        262     28906       29168
-#> 2     000 00000 United States       31001        240     31241       31481
-#> 3     000 00000 United States       33752        324     34076       34400
-#> 4     000 00000 United States       35198        294     35492       35786
-#> 5     000 00000 United States       36724        281     37005       37286
-#> 6     000 00000 United States       38507        378     38885       39263
-#> 7     000 00000 United States       40383        313     40696       41009
-#> 8     000 00000 United States       41773        217     41990       42207
-#> 9     000 00000 United States       42016        212     42228       42440
+#>     <chr> <chr>         <chr>       <dbl>      <dbl>     <dbl>       <dbl>
+#>  1    000 00000 United States       28644        262     28906       29168
+#>  2    000 00000 United States       31001        240     31241       31481
+#>  3    000 00000 United States       33752        324     34076       34400
+#>  4    000 00000 United States       35198        294     35492       35786
+#>  5    000 00000 United States       36724        281     37005       37286
+#>  6    000 00000 United States       38507        378     38885       39263
+#>  7    000 00000 United States       40383        313     40696       41009
+#>  8    000 00000 United States       41773        217     41990       42207
+#>  9    000 00000 United States       42016        212     42228       42440
 #> 10    000 00000 United States       42180        229     42409       42638
-#> ..    ...   ...           ...         ...        ...       ...         ...
-#> Variables not shown: SAEPOV0_17_LB90 <int>, SAEPOV0_17_MOE <int>,
-#>   SAEPOV0_17_PT <int>, SAEPOV0_17_UB90 <int>, SAEPOV0_4_LB90 <int>,
-#>   SAEPOV0_4_MOE <int>, SAEPOV0_4_PT <int>, SAEPOV0_4_UB90 <int>,
-#>   SAEPOV5_17R_LB90 <int>, SAEPOV5_17R_MOE <int>, SAEPOV5_17R_PT <int>,
-#>   SAEPOV5_17R_UB90 <int>, SAEPOVALL_LB90 <int>, SAEPOVALL_MOE <int>,
-#>   SAEPOVALL_PT <int>, SAEPOVALL_UB90 <int>, SAEPOVRT0_17_LB90 <dbl>,
-#>   SAEPOVRT0_17_MOE <dbl>, SAEPOVRT0_17_PT <dbl>, SAEPOVRT0_17_UB90 <dbl>,
-#>   SAEPOVRT0_4_LB90 <dbl>, SAEPOVRT0_4_MOE <dbl>, SAEPOVRT0_4_PT <dbl>,
-#>   SAEPOVRT0_4_UB90 <dbl>, SAEPOVRT5_17R_LB90 <dbl>, SAEPOVRT5_17R_MOE
-#>   <dbl>, SAEPOVRT5_17R_PT <dbl>, SAEPOVRT5_17R_UB90 <dbl>,
-#>   SAEPOVRTALL_LB90 <dbl>, SAEPOVRTALL_MOE <dbl>, SAEPOVRTALL_PT <dbl>,
-#>   SAEPOVRTALL_UB90 <dbl>, SAEPOVU_0_17 <int>, SAEPOVU_0_4 <int>,
-#>   SAEPOVU_5_17R <int>, SAEPOVU_ALL <int>, STABREV <chr>, STATE <chr>,
-#>   SUMLEV <chr>, YEAR <int>, time <int>, us <chr>.
+#> # ... with 13 more rows, and 42 more variables: SAEPOV0_17_LB90 <dbl>,
+#> #   SAEPOV0_17_MOE <dbl>, SAEPOV0_17_PT <dbl>, SAEPOV0_17_UB90 <dbl>,
+#> #   SAEPOV0_4_LB90 <dbl>, SAEPOV0_4_MOE <dbl>, SAEPOV0_4_PT <dbl>,
+#> #   SAEPOV0_4_UB90 <dbl>, SAEPOV5_17R_LB90 <dbl>, SAEPOV5_17R_MOE <dbl>,
+#> #   SAEPOV5_17R_PT <dbl>, SAEPOV5_17R_UB90 <dbl>, SAEPOVALL_LB90 <dbl>,
+#> #   SAEPOVALL_MOE <dbl>, SAEPOVALL_PT <dbl>, SAEPOVALL_UB90 <dbl>,
+#> #   SAEPOVRT0_17_LB90 <dbl>, SAEPOVRT0_17_MOE <dbl>,
+#> #   SAEPOVRT0_17_PT <dbl>, SAEPOVRT0_17_UB90 <dbl>,
+#> #   SAEPOVRT0_4_LB90 <dbl>, SAEPOVRT0_4_MOE <dbl>, SAEPOVRT0_4_PT <dbl>,
+#> #   SAEPOVRT0_4_UB90 <dbl>, SAEPOVRT5_17R_LB90 <dbl>,
+#> #   SAEPOVRT5_17R_MOE <dbl>, SAEPOVRT5_17R_PT <dbl>,
+#> #   SAEPOVRT5_17R_UB90 <dbl>, SAEPOVRTALL_LB90 <dbl>,
+#> #   SAEPOVRTALL_MOE <dbl>, SAEPOVRTALL_PT <dbl>, SAEPOVRTALL_UB90 <dbl>,
+#> #   SAEPOVU_0_17 <dbl>, SAEPOVU_0_4 <dbl>, SAEPOVU_5_17R <dbl>,
+#> #   SAEPOVU_ALL <dbl>, STABREV <chr>, STATE <chr>, SUMLEV <chr>,
+#> #   YEAR <dbl>, time <dbl>, us <chr>
 ```
 
 Future Work
