@@ -138,26 +138,26 @@ saipeAPI::saipe_state(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTAL
 #> # ... with 296 more rows
 ```
 
-County-level data estimates of median household income and poverty rate in 2010--2015
--------------------------------------------------------------------------------------
+County-level data estimates of median household income and poverty rate in 2015
+-------------------------------------------------------------------------------
 
 ``` r
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_county(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
-#> # A tibble: 18,856 x 6
+saipeAPI::saipe_county(year = 2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+#> # A tibble: 3,142 x 6
 #>               NAME SAEMHI_PT SAEPOVRTALL_PT  time state county
 #>              <chr>     <dbl>          <dbl> <dbl> <chr>  <chr>
-#>  1  Autauga County     53049           11.9  2010    01    001
-#>  2  Baldwin County     47618           13.3  2010    01    003
-#>  3  Barbour County     33074           25.3  2010    01    005
-#>  4     Bibb County     35472           20.9  2010    01    007
-#>  5   Blount County     42906           16.5  2010    01    009
-#>  6  Bullock County     25969           31.1  2010    01    011
-#>  7   Butler County     29500           28.1  2010    01    013
-#>  8  Calhoun County     37916           23.5  2010    01    015
-#>  9 Chambers County     30061           28.5  2010    01    017
-#> 10 Cherokee County     34410           21.2  2010    01    019
-#> # ... with 18,846 more rows
+#>  1  Autauga County     56580           12.7  2015    01    001
+#>  2  Baldwin County     52387           12.9  2015    01    003
+#>  3  Barbour County     31433           32.0  2015    01    005
+#>  4     Bibb County     40767           22.2  2015    01    007
+#>  5   Blount County     50487           14.7  2015    01    009
+#>  6  Bullock County     28251           39.6  2015    01    011
+#>  7   Butler County     33868           25.8  2015    01    013
+#>  8  Calhoun County     42091           20.0  2015    01    015
+#>  9 Chambers County     35560           22.4  2015    01    017
+#> 10 Cherokee County     39144           19.4  2015    01    019
+#> # ... with 3,132 more rows
 ```
 
 Possible Variables and Years

@@ -65,23 +65,23 @@ Obtain an API key from the U.S. Census Bureau at [http://api.census.gov/data/key
 
 ## National level estimates of median household income and poverty rate in 2010--2015
 
-```{r, cache=TRUE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
 saipeAPI::saipe_us(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
 ## State-level estimates of median household income and poverty rate in 2010--2015
 
-```{r, cache=TRUE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
 saipeAPI::saipe_state(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
-## County-level data estimates of median household income and poverty rate in 2010--2015
+## County-level data estimates of median household income and poverty rate in 2015
 
-```{r, cache=TRUE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_county(year = 2010:2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+saipeAPI::saipe_county(year = 2015, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
 ## Possible Variables and Years
