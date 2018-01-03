@@ -36,8 +36,8 @@ saipe_parse = function(url){
 #' @source \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}
 "saipe_vars"
 
-saipe_years = c(1989, 1993, 1995:2016)
-devtools::use_data(saipe_years, overwrite = TRUE)
+# saipe_years = c(1989, 1993, 1995:2016)
+# devtools::use_data(saipe_years, overwrite = TRUE)
 
 #' Possible years for us, state, and county-level datasets
 #' @description A vector contains all possible years to retrieve

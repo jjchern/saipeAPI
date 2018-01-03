@@ -1,6 +1,6 @@
 Package: saipeAPI
 Title: Interface to the Census Bureau's API for Small Area Income and Poverty Estimates (SAIPE)
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("JJ", "Chen", , "jiajia.chern@gmail.com", c("aut", "cre"))
 Description: An R client for Census Bureau's API for Small Area Income and Poverty Estimates (SAIPE).
 Depends:
