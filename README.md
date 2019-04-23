@@ -25,6 +25,13 @@ Here is a short introduction for the SAIPE program from
 > counties, SAIPE generally provides the best single-year estimates of
 > median household income.
 
+# Installation
+
+``` r
+# install.packages("remotes")
+remotes::install_github("jjchern/saipeAPI@v0.0.3")
+```
+
 ## Features
 
 `saipeAPI` have three functions that return SAIPE data at different
@@ -101,13 +108,6 @@ district.
 | STATE                | FIPS State Code                                                                 |
 | SUMLEV               | Summary Level                                                                   |
 | YEAR                 | Estimate Year                                                                   |
-
-# Installation
-
-``` r
-# install.packages("remotes")
-remotes::install_github("jjchern/saipeAPI@v0.0.3")
-```
 
 # Usage
 
@@ -202,20 +202,20 @@ saipeAPI::saipe_county(year = 2017, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT
 ``` r
 # The pacakge contains a data frame that shows possible variables and variable labels
 saipeAPI::saipe_vars
-#> # A tibble: 47 x 5
-#>    Name      Label                   Concept       Required  Predicate.Type
-#>    <chr>     <chr>                   <chr>         <chr>     <chr>         
-#>  1 COUNTY    County FIPS Code        Selectable G… not requ… (not a predic…
-#>  2 GEOID     State+County FIPS Code  Geographic C… not requ… (not a predic…
-#>  3 NAME      State or County Name    Geographic C… not requ… (not a predic…
-#>  4 SAEMHI_L… Median Household Incom… Uncertainty … not requ… int           
-#>  5 SAEMHI_M… Median Household Incom… Uncertainty … not requ… int           
-#>  6 SAEMHI_PT Median Household Incom… Estimate      not requ… int           
-#>  7 SAEMHI_U… Median Household Incom… Uncertainty … not requ… int           
-#>  8 SAEPOV0_… Ages 0-17 in Poverty, … Uncertainty … not requ… int           
-#>  9 SAEPOV0_… Ages 0-17 in Poverty, … Uncertainty … not requ… int           
-#> 10 SAEPOV0_… Ages 0-17 in Poverty, … Estimate      not requ… int           
-#> # … with 37 more rows
+#> # A tibble: 47 x 9
+#>    Name  Label Concept Required Attributes Limit `Predicate Type` Group
+#>    <chr> <chr> <chr>   <chr>    <chr>      <chr> <chr>            <chr>
+#>  1 COUN… Coun… Select… not req… ""         0     (not a predicat… N/A  
+#>  2 GEOID Stat… Geogra… not req… ""         0     (not a predicat… N/A  
+#>  3 NAME  Stat… Geogra… not req… ""         0     (not a predicat… N/A  
+#>  4 SAEM… Medi… Uncert… not req… ""         0     int              N/A  
+#>  5 SAEM… Medi… Uncert… not req… ""         0     int              N/A  
+#>  6 SAEM… Medi… Estima… not req… ""         0     int              N/A  
+#>  7 SAEM… Medi… Uncert… not req… ""         0     int              N/A  
+#>  8 SAEP… Ages… Uncert… not req… ""         0     int              N/A  
+#>  9 SAEP… Ages… Uncert… not req… ""         0     int              N/A  
+#> 10 SAEP… Ages… Estima… not req… ""         0     int              N/A  
+#> # … with 37 more rows, and 1 more variable: Values <chr>
 
 # To get a vector of all possible variables
 saipeAPI::saipe_vars$Name
@@ -239,11 +239,11 @@ saipeAPI::saipe_vars$Name
 # To get a vector of all possible years
 saipeAPI::saipe_years
 #>  [1] 1989 1993 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006
-#> [15] 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016
+#> [15] 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017
 
 # Use the above two vectors to download all the US-level data
 saipeAPI::saipe_us(year = saipeAPI::saipe_years, var = saipeAPI::saipe_vars$Name)
-#> # A tibble: 24 x 49
+#> # A tibble: 25 x 49
 #>    COUNTY GEOID NAME  SAEMHI_LB90 SAEMHI_MOE SAEMHI_PT SAEMHI_UB90
 #>    <chr>  <chr> <chr>       <dbl>      <dbl>     <dbl>       <dbl>
 #>  1 000    00000 Unit…       28644        262     28906       29168
@@ -256,7 +256,7 @@ saipeAPI::saipe_us(year = saipeAPI::saipe_years, var = saipeAPI::saipe_vars$Name
 #>  8 000    00000 Unit…       41773        217     41990       42207
 #>  9 000    00000 Unit…       42016        212     42228       42440
 #> 10 000    00000 Unit…       42180        229     42409       42638
-#> # … with 14 more rows, and 42 more variables: SAEPOV0_17_LB90 <dbl>,
+#> # … with 15 more rows, and 42 more variables: SAEPOV0_17_LB90 <dbl>,
 #> #   SAEPOV0_17_MOE <dbl>, SAEPOV0_17_PT <dbl>, SAEPOV0_17_UB90 <dbl>,
 #> #   SAEPOV0_4_LB90 <dbl>, SAEPOV0_4_MOE <dbl>, SAEPOV0_4_PT <dbl>,
 #> #   SAEPOV0_4_UB90 <dbl>, SAEPOV5_17R_LB90 <dbl>, SAEPOV5_17R_MOE <dbl>,
