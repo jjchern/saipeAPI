@@ -1,5 +1,4 @@
 
-
 #' Possible variables for us, state, and county-level datasets
 #'
 #' @description A data frame contains possible variables and variable labels.
