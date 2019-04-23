@@ -12,5 +12,5 @@ saipe_parse = function(url){
 
         tf_csv = tempfile(fileext = ".csv")
         readr::write_csv(parsed, tf_csv)
-        readr::read_csv(tf_csv, skip = 1)
+        suppressMessages(readr::read_csv(tf_csv, skip = 1))
 }

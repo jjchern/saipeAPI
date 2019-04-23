@@ -8,7 +8,7 @@
 \title{Get SAIPE data}
 \usage{
 saipe(geo, year = 2010, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"),
-  api_key = NULL)
+  api_key = Sys.getenv("saipe_key"))
 
 saipe_us(...)
 
