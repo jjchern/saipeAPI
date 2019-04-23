@@ -1,4 +1,8 @@
 
+# saipeAPI 0.0.3
+
+* Incorporated 2017 data
+
 # saipeAPI 0.0.2
 
 * Incorporated 2016 data

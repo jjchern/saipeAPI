@@ -23,7 +23,7 @@ The package `saipeAPI` provides an R client for Census Bureau's API for **S**mal
 
 > The Small Area Income and Poverty Estimates (SAIPE) program produces single-year estimates of median household income and poverty for states and all counties, as well as population and poverty estimates for school districts. Since SAIPE estimates combine ACS data with administrative and other data, SAIPE estimates generally have lower variance than ACS estimates but are released later because they incorporate ACS data in the models. For counties and school districts, particularly those with populations below 65,000, the SAIPE program provides the most accurate subnational estimates of poverty. For counties, SAIPE generally provides the best single-year estimates of median household income.
 
-## Feature
+## Features
 
 `saipeAPI` have three functions that return SAIPE data at different geographic level:
 
@@ -39,8 +39,8 @@ Census's SAIPE has four levels of income and poverty estimates: us, state, count
 
 ## Available Years ([Source](http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html))
 
-- State and County: 1989, 1993, 1995--2016
-- School Districts: 1995, 1997, 1999--2016
+- State and County: 1989, 1993, 1995--2017
+- School Districts: 1995, 1997, 1999--2017
 
 ## Available Variables ([Source](http://api.census.gov/data/timeseries/poverty/saipe/variables.html))
 
@@ -54,33 +54,48 @@ saipeAPI::saipe_vars %>%
 # Installation
 
 ```R
-# install.packages("devtools")
-devtools::install_github("jjchern/saipeAPI@v0.0.2")
+# install.packages("remotes")
+remotes::install_github("jjchern/saipeAPI@v0.0.3")
 ```
 
 # Usage
 
-Obtain an API key from the U.S. Census Bureau at [http://api.census.gov/data/key_signup.html](http://api.census.gov/data/key_signup.html). After that, set your API key with the function `saipeAPI::set_api_key()`.
+Obtain an API key from the U.S. Census Bureau at [http://api.census.gov/data/key_signup.html](http://api.census.gov/data/key_signup.html). After that, set your API key with the function `saipeAPI::set_api_key()`, and then start calling the data retrieval functions.
 
-## National level estimates of median household income and poverty rate in 2010--2016
-
-```{r, message=FALSE, warning=FALSE}
-# saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_us(year = 2010:2016, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+You can also save your API key in the `.Renviron` file for future usage. First, open the `.Renviron` file by
+```R
+# install.packages("usethis")
+usethis::edit_r_environ()
+```
+Save your key in the file in the format of 
+```R
+saipe_key='<Your API Key Here>'
+```
+Reload the `.Renviron` file and check if the key can be assessed:
+```R
+readRenviron("~/.Renviron")
+Sys.getenv("saipe_key")
 ```
 
-## State-level estimates of median household income and poverty rate in 2010--2016
+## National level estimates of median household income and poverty rate in 2010--2017
 
 ```{r, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_state(year = 2010:2016, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+saipeAPI::saipe_us(year = 2010:2017, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
-## County-level data estimates of median household income and poverty rate in 2016
+## State-level estimates of median household income and poverty rate in 2010--2017
 
 ```{r, message=FALSE, warning=FALSE}
 # saipe::set_api_key("<Your API Key Here>")
-saipeAPI::saipe_county(year = 2016, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+saipeAPI::saipe_state(year = 2010:2017, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
+```
+
+## County-level data estimates of median household income and poverty rate in 2017
+
+```{r, message=FALSE, warning=FALSE}
+# saipe::set_api_key("<Your API Key Here>")
+saipeAPI::saipe_county(year = 2017, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 ```
 
 ## Possible Variables and Years

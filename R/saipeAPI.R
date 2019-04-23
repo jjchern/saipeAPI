@@ -37,8 +37,8 @@ set_api_key = function(api_key) Sys.setenv(saipe_key = api_key)
 #' saipeAPI::saipe_state(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 #' saipeAPI::saipe_county(year = 2010:2014, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"))
 #' }
-saipe = function(geo, year = 2010, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"), api_key = NULL) {
-        api_key = Sys.getenv("saipe_key")
+saipe = function(geo, year = 2010, var = c("NAME", "SAEMHI_PT", "SAEPOVRTALL_PT"), api_key = Sys.getenv("saipe_key")) {
+
         if (identical(api_key, ""))
                 stop("Missing API key. Did you forget to call saipeAPI::set_api_key()?", call. = FALSE)
         var = paste(var, sep = '', collapse = ',')
