@@ -1,6 +1,6 @@
 #' Set the Census API key
 #' @export
-#' @param api_key (character) Get Census's API key at \url{http://api.census.gov/data/key_signup.html}.
+#' @param api_key (character) Get Census's API key at <http://api.census.gov/data/key_signup.html>.
 set_api_key = function(api_key) Sys.setenv(saipe_key = api_key)
 
 #' @title Get SAIPE data
@@ -16,9 +16,9 @@ set_api_key = function(api_key) Sys.setenv(saipe_key = api_key)
 #'
 #' @param geo (character) One of "us", "state", and "county".
 #' @param year (numeric) A four-digits value or vector of values. Possible values: 1989, 1993, 1995--2014.
-#' @param var (character) A string or vector of strings. Possible fields: \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}
-#' @param api_key Use \code{saipeAPI::set_api_key("<Your api here>")} to set api_key.
-#' @param ... Pass parameter \code{year} or \code{var} for function \code{saipe_us()}, \code{saipe_state()}, and \code{saipe_county()}. Also see Example section.
+#' @param var (character) A string or vector of strings. Possible fields: <http://api.census.gov/data/timeseries/poverty/saipe/variables.html>
+#' @param api_key Use `saipeAPI::set_api_key("<Your api here>")` to set api_key.
+#' @param ... Pass parameter `year` or `var` for function `saipe_us()`, `saipe_state()`, and `saipe_county()`. Also see Example section.
 #'
 #' @return Return a tibble, i.e., modern data frame.
 #' If multiple years are specified, it gives a panel dataset.

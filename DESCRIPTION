@@ -16,3 +16,4 @@ Imports: tibble,
     readr,
     jsonlite,
     plyr
+Roxygen: list(markdown = TRUE)

@@ -33,7 +33,7 @@ saipe_parse = function(url){
 #' @examples
 #' # To get a vector of possible variables:
 #' saipeAPI::saipe_vars$Name
-#' @source \url{http://api.census.gov/data/timeseries/poverty/saipe/variables.html}
+#' @source <http://api.census.gov/data/timeseries/poverty/saipe/variables.html>
 "saipe_vars"
 
 # saipe_years = c(1989, 1993, 1995:2016)
@@ -44,5 +44,5 @@ saipe_parse = function(url){
 #' @examples
 #' # To get a vector of possible years:
 #' saipeAPI::saipe_years
-#' @source \url{http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html}
+#' @source <http://www.census.gov/data/developers/data-sets/Poverty-Statistics.html>
 "saipe_years"
