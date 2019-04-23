@@ -23,6 +23,13 @@ The package `saipeAPI` provides an R client for Census Bureau's API for **S**mal
 
 > The Small Area Income and Poverty Estimates (SAIPE) program produces single-year estimates of median household income and poverty for states and all counties, as well as population and poverty estimates for school districts. Since SAIPE estimates combine ACS data with administrative and other data, SAIPE estimates generally have lower variance than ACS estimates but are released later because they incorporate ACS data in the models. For counties and school districts, particularly those with populations below 65,000, the SAIPE program provides the most accurate subnational estimates of poverty. For counties, SAIPE generally provides the best single-year estimates of median household income.
 
+# Installation
+
+```R
+# install.packages("remotes")
+remotes::install_github("jjchern/saipeAPI@v0.0.3")
+```
+
 ## Features
 
 `saipeAPI` have three functions that return SAIPE data at different geographic level:
@@ -49,13 +56,6 @@ library(dplyr, warn.conflicts = FALSE)
 saipeAPI::saipe_vars %>%
         select(Name, Label) %>% 
         knitr::kable()
-```
-
-# Installation
-
-```R
-# install.packages("remotes")
-remotes::install_github("jjchern/saipeAPI@v0.0.3")
 ```
 
 # Usage
